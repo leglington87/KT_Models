@@ -160,6 +160,7 @@ hist(preds[which(test_y<.5)])
 hist(preds[which(test_y>=.5)])
 importance = xgb.importance(model=model)
 #Of tag combinations
-xgb.plot.importance(importance_matrix=importance)
-
+xgb.plot.importance(importance_matrix=importance,measure = "Importance")
+importance$norm_importance = importance$Importance/importance$Frequency
+write.csv(importance)
 ###Clustering
